@@ -20,6 +20,7 @@
     letter-spacing: 10px;
     margin: 0 auto;
     width: 700px;
+    font-family: 'Piedra', cursive;
 }
 
 #msg {
@@ -101,7 +102,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Rock Salt', cursive;
+    font-family: 'VT323', monospace;
     flex-direction: column;
     margin: 30px auto;     
 }

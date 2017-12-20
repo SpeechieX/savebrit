@@ -144,7 +144,7 @@ function render(){
     if (misses < 4) {
         overlayEl.innerHTML = imgEl.outerHTML;
     } else {
-        overlayEl.innerHTML = "<h1>BRITTANY'S</h1><h1>DEAD</h1>";
+        overlayEl.innerHTML = "<h1>Continue?</h1><h1>GAME OVER</h1>";
     }
 }
 
@@ -154,6 +154,8 @@ function renderKeyboard() {
     }
 }
 
+init();
+render();
 
 
 
@@ -161,8 +163,6 @@ function renderKeyboard() {
 
  
 
-init();
-render();
 
 
     
