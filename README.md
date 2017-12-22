@@ -17,6 +17,8 @@ By Erick Robertson (A General Assembly Student)
 
 Note : I'll be updating the question/answer pairs in this game frequently every week until it reaches 1000 questions.
 
+Click here to play : https://speechiex.github.io/savebrit/
+
 
 
  
