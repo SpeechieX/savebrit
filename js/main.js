@@ -96,14 +96,18 @@ var overlayEl = document.querySelector('#overlay');
 
 /*----------------------- event listeners----------------------*/
 // When Start Button is Clicked Fire a Question
+// allows player to skip a turn
 document.querySelector('#go').addEventListener('click', function() {
     init();
     render();
 });
-
+// next button controls
 document.querySelector('#forward').addEventListener('click', function() {
     init();
     render();
+    // resets button placement after win
+    document.querySelector('#forward').style.display = 'none';
+    document.querySelector('#go').style.display = 'inline';
 });
 document.getElementById('keyboard').addEventListener('click', function(evt) {
     if (misses >= 4) return; // killswitch (can't continue on red)
@@ -113,8 +117,9 @@ document.getElementById('keyboard').addEventListener('click', function(evt) {
     if (answer.includes(letter)) {
         if (!correcto.includes(letter)) {
             correcto.push(letter);
+            // filters correct answerts to uniqueAnswer (also takes out spaces of answers)
             var uniqueAnswer = answer.filter((elem, pos) => answer.indexOf(elem) === pos && elem !== ' ')
-
+            // rules for win screen
             if (correcto.length === uniqueAnswer.join("").split("").length) {
                 winner = true;
             }
@@ -130,6 +135,7 @@ document.getElementById('keyboard').addEventListener('click', function(evt) {
 });
 /*------------------------- functions--------------------------*/
 function init() {
+    // creates random number that selects question : answer pair
     var random = Math.floor(Math.random() * questions.length);
     question = questions[random];
     answer = answers[random].split('');
@@ -158,6 +164,8 @@ function render(){
     if (winner) {
         overlayEl.innerHTML = "<h1><img src='https://i.imgur.com/WQCIft5.gif'height='324' width='430'></h1>";
         document.querySelector('#forward').style.display = "inline"
+        document.querySelector('#go').style.display = "none"
+
     }
 }
 function renderKeyboard() {
