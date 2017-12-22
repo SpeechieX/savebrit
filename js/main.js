@@ -1,12 +1,10 @@
 /*--------------Save Brittany (Hangman Concept)-------------------*/
 
 // constants
-
-
 var questions = ["What’s Brittany Spears' middle name?",
                  "What does Brittany Spears say after making a mistake?",
                  "Who is the creator of Javascript?",
-                 "What year did the USSR become Russia?",
+                 "Which president installed a secret taping system in the White House",
                  "What is the name of the country formerly known as Rhodesia?",
                  "Where in the world is Carmen _______________?",
                  "What month is Brittany Spears' Birthday in?",
@@ -15,14 +13,14 @@ var questions = ["What’s Brittany Spears' middle name?",
                  "Baby Hit Me ____ _____ _____.",
                  "My Loneliness is ___________ me.",
                  "Brittany once kissed ___________ on stage.",
-                 "What year did Iran become an Islamic Republic?",
+                 "What's the name of Mozilla's private browsing app?",
                  "What is the capitol of Japan?",
                  "Diamonds are made up of almost entirely of what element?",
                  "How many hydrogen atoms are in one molecule of water?",
                  "Who is the King of Pop?",
                  "North Atlantic Treaty Organization",
                  "In what city is the United Nations HQ located?",
-                 "9 x 19mm Parabellum = ___",
+                 "What is the capital of Madagascar?",
                  "What's the abbreviation of US Special Operations Command? ",
                  "What country is south of Romainia bordering the Black Sea?",
                  "The city of Timbuktu is now located in a country called _____",
@@ -36,14 +34,18 @@ var questions = ["What’s Brittany Spears' middle name?",
                  "What is an OSCP?",
                  "Who released - The Dark Side of the Moon? -",
                  "Who released - Electric Ladyland? -",
-                 "Who released - I Got Dem Ol' Kozmic Blues Again Mama! - ?"
+                 "Who released - I Got Dem Ol' Kozmic Blues Again Mama! - ?",
+                 "What was the middle name of John F. Kennedy?",
+                 "How many universities did JFK attend?",
+                 
+
 
 ]
 
 var answers = [ "jean",
                 "oops i did it again",
                 "brendan eich",
-                "1922",
+                "kennedy",
                 "zimbabwe",
                 "sandiego",
                 "december",
@@ -52,14 +54,14 @@ var answers = [ "jean",
                 "one more time",
                 "killing",
                 "madonna",
-                "1979",
+                "firefox focus",
                 "tokyo",
                 "carbon",
                 "two",
                 "micheal jackson",
                 "nato",
                 "geneva",
-                "9mm",
+                "antananarivo",
                 "socom",
                 "bulgaria",
                 "mali",
@@ -74,22 +76,16 @@ var answers = [ "jean",
                 "pink floyd",
                 "jimi hendrix",
                 "janis joplin",
+                "fitzgerald",
+                "two",
+
+                
             ]
 
 var opacities = [1, 0.75, 0.5, 0.25, 0];
 
-
-
-
-
-
-
-
-
-
-
 // state 
-var answerkeyIdx, guess, letter, question, answer, misses, usedLetters;
+var answerkeyIdx, guess, letter, question, answer, misses, usedLetters, correcto, winner;
 
 // cached elements
 var msgEl = document.getElementById('msg');
@@ -100,17 +96,29 @@ var overlayEl = document.querySelector('#overlay');
 
 /*----------------------- event listeners----------------------*/
 // When Start Button is Clicked Fire a Question
-document.querySelector('#go').addEventListener('click', function () {
+document.querySelector('#go').addEventListener('click', function() {
     init();
     render();
 });
 
+document.querySelector('#forward').addEventListener('click', function() {
+    init();
+    render();
+});
 document.getElementById('keyboard').addEventListener('click', function(evt) {
-    if (misses >= 4) return;
+    if (misses >= 4) return; // killswitch (can't continue on red)
     // evt holding button content
     letter = evt.target.innerHTML;
     // check if letter in answer is exists
     if (answer.includes(letter)) {
+        if (!correcto.includes(letter)) {
+            correcto.push(letter);
+            var uniqueAnswer = answer.filter((elem, pos) => answer.indexOf(elem) === pos && elem !== ' ')
+
+            if (correcto.length === uniqueAnswer.join("").split("").length) {
+                winner = true;
+            }
+        }
         answer.forEach(function(char, idx) {
             if (char === letter) guess[idx] = letter;
         });
@@ -120,7 +128,6 @@ document.getElementById('keyboard').addEventListener('click', function(evt) {
     usedLetters.push(letter);
     render();
 });
-
 /*------------------------- functions--------------------------*/
 function init() {
     var random = Math.floor(Math.random() * questions.length);
@@ -134,6 +141,8 @@ function init() {
     letter = null;
     misses = 0;
     usedLetters = [];
+    correcto = [];
+    winner = false;
 }
 
 function render(){
@@ -144,10 +153,13 @@ function render(){
     if (misses < 4) {
         overlayEl.innerHTML = imgEl.outerHTML;
     } else {
-        overlayEl.innerHTML = "<h1>Continue?</h1><h1>GAME OVER</h1>";
+        overlayEl.innerHTML = "<h1 align='center'><img src='https://i.imgur.com/WzfTAy8.png'height='324' width='430'></h1>";
+    }
+    if (winner) {
+        overlayEl.innerHTML = "<h1><img src='https://i.imgur.com/WQCIft5.gif'height='324' width='430'></h1>";
+        document.querySelector('#forward').style.display = "inline"
     }
 }
-
 function renderKeyboard() {
     for (var i=0; i < letterBtns.length; i++){
         letterBtns[i].style.visibility = (usedLetters.includes(letterBtns[i].innerHTML)) ? 'hidden' : 'visible';
@@ -156,6 +168,18 @@ function renderKeyboard() {
 
 init();
 render();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

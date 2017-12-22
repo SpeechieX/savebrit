@@ -7,7 +7,14 @@ By Erick Robertson (A General Assembly Student)
 - Save Brittany From Defeat by Choosing the Correct Answers
 - Each Round You'll be asked a Question and given the opportunity to answer the question 4 times.
 - Guess the characters in the answer successfully and they'll be revealed to you
-- Guess incorrectly and consequently Brittany loses a little bit more hair :)
-- You have the opportunity to skip two questions if it's too difficult for you. However Brittany will not change state until you've successfully answered 3 questions.
+- Guess incorrectly and Brittany slips deeper into darkness.
+
+
+
+<img src ="https://i.imgur.com/eomB3b7.png'align='center">
+
+- Made with HTML, CSS3 and Javascript.
+
+
 
  
