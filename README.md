@@ -15,6 +15,8 @@ By Erick Robertson (A General Assembly Student)
 
 - Made with HTML, CSS3 and Javascript.
 
+Note : I'll be updating the question/answer pairs in this game frequently every week until it reaches 1000 questions.
+
 
 
  

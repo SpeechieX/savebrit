@@ -37,7 +37,11 @@ var questions = ["What’s Brittany Spears' middle name?",
                  "Who released - I Got Dem Ol' Kozmic Blues Again Mama! - ?",
                  "What was the middle name of John F. Kennedy?",
                  "How many universities did JFK attend?",
-                 
+                 "Who's the villian in the move 'The Last Dragon'?",
+                 "Who made 'Chinese Connection?",
+                 "How old is Chuck Norris?",
+                 "Musashi ________.",
+                 "The animation Trigun references which classic Western?",
 
 
 ]
@@ -78,6 +82,15 @@ var answers = [ "jean",
                 "janis joplin",
                 "fitzgerald",
                 "two",
+                "sho nuff",
+                "bruce lee",
+                "infinite",
+                "miyamoto",
+                "gunsmoke",
+
+
+
+
 
                 
             ]
