@@ -41,7 +41,7 @@ var questions = ["What’s Brittany Spears' middle name?",
                  "Who made 'Chinese Connection?",
                  "How old is Chuck Norris?",
                  "Musashi ________.",
-                 "The animation Trigun references which classic Western?",
+                 "The animation Trigun references which classic Western?"
 
 
 ]
@@ -86,14 +86,9 @@ var answers = [ "jean",
                 "bruce lee",
                 "infinite",
                 "miyamoto",
-                "gunsmoke",
-
-
-
-
-
-                
+                "gunsmoke"
             ]
+
 
 var opacities = [1, 0.75, 0.5, 0.25, 0];
 
@@ -131,7 +126,7 @@ document.getElementById('keyboard').addEventListener('click', function(evt) {
         if (!correcto.includes(letter)) {
             correcto.push(letter);
             // filters correct answerts to uniqueAnswer (also takes out spaces of answers)
-            var uniqueAnswer = answer.filter((elem, pos) => answer.indexOf(elem) === pos && elem !== ' ')
+            var uniqueAnswer = answer.filter((elem, pos) => answer.indexOf(elem) === pos && elem !== ' ');
             // rules for win screen
             if (correcto.length === uniqueAnswer.join("").split("").length) {
                 winner = true;
@@ -176,8 +171,8 @@ function render(){
     }
     if (winner) {
         overlayEl.innerHTML = "<h1><img src='https://i.imgur.com/WQCIft5.gif'height='324' width='430'></h1>";
-        document.querySelector('#forward').style.display = "inline"
-        document.querySelector('#go').style.display = "none"
+        document.querySelector('#forward').style.display = "inline";
+        document.querySelector('#go').style.display = "none";
 
     }
 }
